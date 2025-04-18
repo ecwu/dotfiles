@@ -1,0 +1,1 @@
+alias attach_conda='eval "$(/Users/zhenghaowu/miniconda3/bin/conda shell.zsh hook)"'

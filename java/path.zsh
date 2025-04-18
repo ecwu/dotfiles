@@ -1,0 +1,1 @@
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"

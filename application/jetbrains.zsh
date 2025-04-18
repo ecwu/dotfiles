@@ -1,0 +1,1 @@
+export PATH="$PATH:/Users/zhenghaowu/Library/Application Support/JetBrains/Toolbox/scripts"
