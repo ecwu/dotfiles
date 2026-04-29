@@ -1,11 +1,20 @@
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+  load_nvm() {
+    unset -f nvm node npm npx corepack
+    . "$NVM_DIR/nvm.sh"
+    [[ -s "$NVM_DIR/bash_completion" ]] && . "$NVM_DIR/bash_completion"
+  }
+
+  nvm() { load_nvm; nvm "$@"; }
+  node() { load_nvm; node "$@"; }
+  npm() { load_nvm; npm "$@"; }
+  npx() { load_nvm; npx "$@"; }
+  corepack() { load_nvm; corepack "$@"; }
+fi
 
 # pnpm
-export PNPM_HOME="/Users/zhenghaowu/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+export PNPM_HOME="$HOME/Library/pnpm"
+path_prepend "$PNPM_HOME"
 # pnpm end

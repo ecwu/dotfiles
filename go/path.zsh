@@ -1,6 +1,10 @@
 export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+if [[ -d /opt/homebrew/opt/go/libexec ]]; then
+  export GOROOT="/opt/homebrew/opt/go/libexec"
+elif [[ -d /opt/homebrew/opt/golang/libexec ]]; then
+  export GOROOT="/opt/homebrew/opt/golang/libexec"
+fi
+
+path_append "${GOPATH}/bin"
+[[ -n "$GOROOT" ]] && path_append "${GOROOT}/bin"

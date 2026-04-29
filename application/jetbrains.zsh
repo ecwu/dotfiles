@@ -1,1 +1,1 @@
-export PATH="$PATH:/Users/zhenghaowu/Library/Application Support/JetBrains/Toolbox/scripts"
+path_append "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"

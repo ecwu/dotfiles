@@ -1,1 +1,10 @@
-alias attach_conda='eval "$(/Users/zhenghaowu/miniconda3/bin/conda shell.zsh hook)"'
+if [[ -x "$HOME/miniconda3/bin/conda" ]]; then
+  attach_conda() {
+    eval "$("$HOME/miniconda3/bin/conda" shell.zsh hook)"
+  }
+
+  conda() {
+    attach_conda
+    conda "$@"
+  }
+fi
